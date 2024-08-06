@@ -1,0 +1,42 @@
+﻿@model List<Message>
+@{
+    ViewData["Title"] = "ListMessage";
+    Layout = "~/Views/Shared/_MailLayout.cshtml";
+}
+
+@foreach(var item in Model)
+{
+
+    <div class="flex items-center shadow-xs transition-all duration-300 ease-in-out p-5 hover:shadow-md">
+        <div class="w-10 h-10 overflow-hidden rounded-md">
+            <img class="w-full h-full object-cover" src="@item.SenderImageUrl" alt="Sender Image">
+        </div>
+        <h1 class="ml-3">@item.SenderName</h1>
+        <h2 class="ml-3 text-xs">@item.Subject</h2>
+
+        <p class="ml-6 flex-1 text-xs">
+            <a href="/Messages/MessageDetails/@item.MessageID" class="text-blue-600 hover:underline">
+                @item.Content.Substring(0, 70)...
+            </a>
+        </p>
+        <p class="font-bold text-gray-900">@item.Date.ToShortDateString()</p>
+
+        <!-- Sil ve cevapla butonları -->
+        <div class="ml-4 flex space-x-2">
+            <a href="/Messages/DeleteMessage/@item.MessageID" class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition duration-200 text-center">
+                Sil
+            </a>
+
+            <button class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-200">
+                Cevapla
+            </button>
+        </div>
+    </div>
+
+
+   
+  
+
+}
+
+

@@ -1,0 +1,60 @@
+﻿@model CreateRegisterDto
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Kayıt Ol</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+	<link rel="stylesheet" href="/colorlib-regform-17/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+		<!-- STYLE CSS -->
+	<link rel="stylesheet" href="/colorlib-regform-17/css/style.css">
+	</head>
+
+	<body>
+
+		<div class="wrapper" style="background-image: url('images/bg-registration-form-1.jpg');">
+			<div class="inner">
+				<div class="image-holder">
+				<img src="/colorlib-regform-17/images/b.jpg" alt="">
+				</div>
+				<form method="post">
+					<h3>Bir MailBox Hesabı Oluşturun</h3>
+					<div class="form-group">
+						<input type="text" placeholder="Adınız" class="form-control" asp-for="Name">
+					<input type="text" placeholder="Soyadınız" class="form-control" asp-for="Surname">
+					</div>
+					<div class="form-wrapper">
+					<input type="text" placeholder="Kullanıcı Adınız" class="form-control" asp-for="UserName">
+						<i class="zmdi zmdi-account"></i>
+					</div>
+
+					<div class="form-wrapper">
+						<input type="text" placeholder="Görsel yolu" class="form-control" asp-for="ImageUrl">
+					<i class="zmdi zmdi-account"></i>
+					</div>
+					<div class="form-wrapper">
+					<input type="text" placeholder="Email Adresiniz" class="form-control" asp-for="Email">
+						<i class="zmdi zmdi-email"></i>
+					</div>
+					
+					<div class="form-wrapper">
+					<input type="password" placeholder="Şifreniz" class="form-control" asp-for="Password">
+						<i class="zmdi zmdi-lock"></i>
+					</div>
+					
+					<button>Kayıt Ol
+						<i class="zmdi zmdi-arrow-right"></i>
+					</button>
+				</form>
+			</div>
+		</div>
+		
+	</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

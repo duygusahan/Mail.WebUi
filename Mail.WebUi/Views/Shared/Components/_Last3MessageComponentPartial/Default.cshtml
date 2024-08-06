@@ -1,0 +1,42 @@
+﻿@model List<Message>
+
+<div class="dropdown relative mr-5 md:static">
+
+    <button class="text-gray-500 menu-btn p-0 m-0 hover:text-gray-900 focus:text-gray-900 focus:outline-none transition-all ease-in-out duration-300">
+        <i class="fad fa-comments"></i>
+    </button>
+
+    <button class="hidden fixed top-0 left-0 z-10 w-full h-full menu-overflow"></button>
+
+    <div class="menu hidden md:w-full md:right-0 rounded bg-white shadow-md absolute z-20 right-0 w-84 mt-5 py-2 animated faster">
+        <!-- top -->
+        <div class="px-4 py-2 flex flex-row justify-between items-center capitalize font-semibold text-sm">
+            <h1>Mesajlar</h1>
+            <div class="bg-teal-100 border border-teal-200 text-teal-500 text-xs rounded px-1">
+                <strong>3</strong>
+            </div>
+        </div>
+        <hr>
+        <!-- end top -->
+        <!-- body -->
+        @foreach (var item in Model)
+        {
+            <a class="flex flex-row items-center justify-start px-4 py-4 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 transition-all duration-300 ease-in-out" href="#">
+                <div class="w-10 h-10 rounded-full overflow-hidden mr-3 bg-gray-100 border border-gray-300">
+                    <img class="w-full h-full object-cover" src="img/user1.jpg" alt="">
+                </div>
+                <div class="flex-1 flex flex-row bg-green-100">
+                    <div class="flex-1">
+                        <h1 class="text-sm font-semibold">@item.SenderName</h1>
+                        <p class="text-xs text-gray-500">@item.Subject</p>
+                    </div>
+                    <div class="text-right text-xs text-gray-500">
+                        <p>@item.Date.ToShortDateString()</p>
+                    </div>
+                </div>
+            </a>
+            <hr>
+        }
+        <!-- end body -->
+    </div>
+</div>

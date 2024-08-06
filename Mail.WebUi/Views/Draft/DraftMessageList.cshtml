@@ -1,0 +1,37 @@
+﻿@using Mail.EntityLayer.Concrete
+@model List<Draft>
+@{
+    ViewData["Title"] = "DraftMessageList";
+    Layout = "~/Views/Shared/_MailLayout.cshtml";
+}
+<h2>@ViewData["Title"]</h2>
+
+@foreach (var draft in Model)
+{
+    <div class="flex items-center shadow-xs transition-all duration-300 ease-in-out p-5 hover:shadow-md">
+        <div class="w-10 h-10 overflow-hidden rounded-md">
+            <!-- Placeholder image if SenderImageUrl is not part of Draft entity -->
+            <img class="w-full h-full object-cover" src="~/images/default-avatar.png" alt="Sender Image">
+        </div>
+        <h1 class="ml-3">@draft.SenderName</h1>
+        <h2 class="ml-3 text-xs">@draft.Subject</h2>
+
+        <p class="ml-6 flex-1 text-xs">
+            <a href="/Drafts/EditDraft/@draft.DraftID" class="text-blue-600 hover:underline">
+                @draft.Content.Substring(0, 70)...
+            </a>
+        </p>
+        <p class="font-bold text-gray-900">@draft.Date.ToShortDateString()</p>
+
+        <!-- Düzenle ve sil butonları -->
+        <div class="ml-4 flex space-x-2">
+            <a href="/Drafts/EditDraft/@draft.DraftID" class="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition duration-200 text-center">
+                Düzenle
+            </a>
+
+            <a href="/Drafts/DeleteDraft/@draft.DraftID" class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition duration-200 text-center">
+                Sil
+            </a>
+        </div>
+    </div>
+}

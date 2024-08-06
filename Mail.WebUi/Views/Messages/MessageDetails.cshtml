@@ -1,0 +1,62 @@
+﻿@model Mail.EntityLayer.Concrete.Message
+@{
+    ViewData["Title"] = "MessageDetails";
+    Layout = "~/Views/Shared/_MailLayout.cshtml";
+}
+
+<div class="col-span-6 card flex flex-col">
+    
+    <div class="p-6 flex justify-start">
+        <a href="/Messages/ListMessage" class="btn text-gray-800 bg-white hover:bg-gray-100 hover:text-gray-900 uppercase tracking-wider">
+            <i class="fad fa-arrow-left mr-2"></i> Geri
+        </a>
+    </div>
+
+    <div class="p-6 flex flex-col">
+        <!-- Message Header -->
+        <div class="flex items-center border-b pb-4 mb-4">
+            <div class="w-12 h-12 rounded-full overflow-hidden mr-4 bg-gray-100 border border-gray-300">
+                <img class="w-full h-full object-cover" src="@Model.SenderImageUrl" alt="Sender Image">
+            </div>
+            <div class="flex-1">
+                <h1 class="text-xl font-semibold">@Model.Subject</h1>
+                <p class="text-sm text-gray-500">Gönderen: <span class="font-medium">@Model.SenderMail</span></p>
+            </div>
+            <div class="text-right text-gray-500 text-sm">
+                <p>Gönderildi: @Model.Date.ToShortDateString()</p>
+            </div>
+        </div>
+
+        <!-- Message Content -->
+        <div class="text-gray-800 leading-relaxed mb-6">
+            <p>@Model.Content</p>
+            
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex justify-end space-x-3 mb-6">
+            <a href="/Messages/Reply" class="btn-indigo uppercase tracking-wider">
+                <i class="fad fa-reply mr-2"></i> Cevapla
+            </a>
+            <a href="/Messages/Forward" class="btn text-gray-800 bg-white hover:bg-gray-100 hover:text-gray-900 uppercase tracking-wider">
+                <i class="fad fa-share mr-2"></i> İlet
+            </a>
+            <a href="@Url.Action("MessageDetails", new { id = Model.MessageID })" class="btn text-red-600 bg-white hover:bg-red-100 hover:text-red-800 uppercase tracking-wider">
+                <i class="fad fa-trash mr-2"></i> Sil
+            </a>
+            
+        </div>
+
+        <!-- Reply Section -->
+        <div class="border-t pt-4">
+            <form action="/Messages/Reply" method="post" class="flex flex-col space-y-4">
+                <textarea class="p-3 border rounded resize-none" rows="5" placeholder="Yanıtınızı buraya yazın..."></textarea>
+                <button type="submit" class="btn-indigo uppercase tracking-wider">
+                    <i class="fad fa-reply mr-2"></i> Yanıtla
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+

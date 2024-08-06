@@ -1,0 +1,35 @@
+﻿@model List<Message>
+@{
+    ViewData["Title"] = "TrashBox";
+    Layout = "~/Views/Shared/_MailLayout.cshtml";
+}
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Gönderen Adı</th>
+            <th>Gönderen Email</th>
+            <th>Konu</th>
+            <th>Tarih</th>
+            <th>Mesaj Detayları</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var message in Model)
+        {
+            <tr>
+                <td>@message.ReceiverName</td>
+                <td>@message.ReceiverMail</td>
+                <td>@message.Subject</td>
+                <td>@message.Date.ToShortDateString()</td>
+                <td>
+                    <a class="btn btn-primary" href="@Url.Action("MessageDetails", new { id = message.MessageID })">Detay</a>
+                    <!-- Add other actions as needed -->
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
