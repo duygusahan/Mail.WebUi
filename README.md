@@ -5,6 +5,7 @@ Bu proje, Asp .Net Core Identity kullanılarak geliştirilmiş bir mesajlaşma u
 - N Tier Architecture
 - Identity
 - Fluent Validation
+- Dto Layer 
 
 ## Yeni Üye Kaydı Sayfası
 
